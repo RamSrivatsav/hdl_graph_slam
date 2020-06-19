@@ -71,6 +71,7 @@ private:
     transform_thresholding = pnh.param<bool>("transform_thresholding", false);
     max_acceptable_trans = pnh.param<double>("max_acceptable_trans", 1.0);
     max_acceptable_angle = pnh.param<double>("max_acceptable_angle", 1.0);
+    publish_tf = pnh.param<bool>("publish_tf", true);
 
     // select a downsample method (VOXELGRID, APPROX_VOXELGRID, NONE)
     std::string downsample_method = pnh.param<std::string>("downsample_method", "VOXELGRID");
@@ -236,8 +237,9 @@ private:
     trans_pub.publish(odom_trans);
 
     // broadcast the transform over tf
-    odom_broadcaster.sendTransform(odom_trans);
-
+    if (publish_tf == true){
+      odom_broadcaster.sendTransform(odom_trans);
+    }
     // publish the transform
     nav_msgs::Odometry odom;
     odom.header.stamp = stamp;
@@ -283,6 +285,7 @@ private:
   bool transform_thresholding;  //
   double max_acceptable_trans;  //
   double max_acceptable_angle;
+  bool publish_tf;
 
   // odometry calculation
   geometry_msgs::PoseWithCovarianceStampedConstPtr msf_pose;
