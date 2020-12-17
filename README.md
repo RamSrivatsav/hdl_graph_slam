@@ -1,6 +1,6 @@
 # hdl_graph_slam
 
-**This repository is a clone of the actual hdl_graph_slam repository. Please visit: https://github.com/koide3/hdl_graph_slam to download the actual repository.**
+**This repository is a modification of the actual hdl_graph_slam repository. Please visit: https://github.com/koide3/hdl_graph_slam to download the actual repository.**
 **This repository has a new parameter called publish_tf to toggle OFF/ON the odom tf broadcaster in scan_matching_odometry_nodelet.**
 **The credit to this work belongs to koide3 (https://github.com/koide3)**
 
